@@ -54,10 +54,10 @@ energy_storms_seq: energy_storms_seq.c energy_storms.h energy_storms_core.o
 		$(CC) $(DEBUG) $< energy_storms_core.o $(LIBS) -o $@
 
 energy_storms_mpi_omp_core.o: energy_storms_mpi_omp_core.c energy_storms.h
-		$(MPICC) $(DEBUG) $(MPI_OMP_EXTRA_CFLAGS) -c $< $(LIBS) $(MPI_OMP_EXTRA_LIBS) -o $@
+		$(MPICC) $(DEBUG) $(OMPFLAG) $(MPI_OMP_EXTRA_CFLAGS) -c $< $(LIBS) $(MPI_OMP_EXTRA_LIBS) -o $@
 
 energy_storms_mpi_omp: energy_storms_mpi_omp.c energy_storms.h energy_storms_mpi_omp_core.o
-		$(MPICC) $(DEBUG) $(MPI_OMP_EXTRA_CFLAGS) $< energy_storms_mpi_omp_core.o $(LIBS) $(MPI_OMP_EXTRA_LIBS) -o $@
+		$(MPICC) $(DEBUG) $(OMPFLAG) $(MPI_OMP_EXTRA_CFLAGS) $< energy_storms_mpi_omp_core.o $(LIBS) $(MPI_OMP_EXTRA_LIBS) -o $@
 	
 energy_storms_cuda_core.o: energy_storms_cuda_core.cu energy_storms.h
 		$(CUDACC) $(DEBUG) $(CUDA_EXTRA_CFLAGS) -c $< $(LIBS) $(CUDA_EXTRA_LIBS) -o $@
